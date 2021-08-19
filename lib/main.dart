@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'CompulsoryTask/hngtask.dart';
 
 void main() {
   runApp(ContactApp());
+  CompulsoryTask().printName();
 }
 
 class ContactApp extends StatefulWidget {
@@ -12,22 +15,18 @@ class ContactApp extends StatefulWidget {
 
 class _ContactAppState extends State<ContactApp> {
   var _name;
-
   var _email;
-
   var _phone;
 
   final nameCon = new TextEditingController();
-
   final emailCon = new TextEditingController();
-
   final phoneCon = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.indigoAccent,
+        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.indigo,
           title: Text(
@@ -42,7 +41,10 @@ class _ContactAppState extends State<ContactApp> {
             child: Column(
               children: [
                 Expanded(
+                  flex: 2,
                   child: Container(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.all(8),
                     alignment: Alignment.center,
                     child: Text(
@@ -56,55 +58,58 @@ class _ContactAppState extends State<ContactApp> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 15,
-                ),
-                Expanded(
-                  child: Row(
+                Expanded(flex: 4,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(width: 40),
-                      Image.asset(
-                        'assets/HNG Logo.png',
-                        width: 100,
-                        height: 100,
+                      Row(
+                        children: [
+                          SizedBox(width: 40),
+                          Image.asset(
+                            'assets/HNG Logo.png',
+                            width: 100,
+                            height: 100,
+                          ),
+                          Image.asset(
+                            'assets/I4G Logo.png',
+                            width: 100,
+                            height: 100,
+                          ),
+                          Image.asset(
+                            'assets/Zuri Logo.png',
+                            width: 100,
+                            height: 100,
+                          ),
+                        ],
                       ),
-                      Image.asset(
-                        'assets/I4G Logo.png',
-                        width: 100,
-                        height: 100,
+                      InkWell(
+                        onTap: () => _launchURL('https://internship.zuri.team/'),
+                        child: Container(
+                          child: Text('Become our Intern',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontStyle: FontStyle.italic,
+                              color: Colors.lightGreen,
+                              fontWeight: FontWeight.bold,
+                            ),),
+                        ),
                       ),
-                      Image.asset(
-                        'assets/Zuri Logo.png',
-                        width: 100,
-                        height: 100,
+                      InkWell(
+                        onTap: () => _launchURL('https://training.zuri.team/'),
+                        child: Container(
+                          child: Text('Let Us Train You',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontStyle: FontStyle.italic,
+                              color: Colors.lightGreen,
+                              fontWeight: FontWeight.bold,
+                            ),),
+                        ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 15,
-                ),
-                Expanded(
-                    child: Container(
-                  child: Text('https://internship.zuri.team/',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontStyle: FontStyle.italic,
-                      color: Colors.lightGreen,
-                      fontWeight: FontWeight.bold,
-                    ),),
-                )),
-                Expanded(
-                    child: Container(
-                      child: Text('Ilo Chidiebere Annabel',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontStyle: FontStyle.italic,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),),
 
-                    )),
                 TextField(
                   controller: nameCon,
                   decoration: InputDecoration(
@@ -168,6 +173,9 @@ class _ContactAppState extends State<ContactApp> {
         ),
       ),
     );
+  }
+  void _launchURL(url) async {
+    await canLaunch(url)? await launch(url): throw 'could not launch $url';
   }
 }
 
