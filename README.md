@@ -1,4 +1,5 @@
-![Screenrecorder-2021-08-19-04-24-15-669 1  (1)](https://user-images.githubusercontent.com/64291892/130010931-1a3d00d4-ab8f-424d-a41a-695227fdd6cb.gif)
+![Screenrecorder-2021-08-19-20-01-57-658 1](https://user-images.githubusercontent.com/64291892/130140733-3c38d67c-728a-42dc-97e7-88c0c9b01d6c.gif)
+
 # contact_connect
 
 A new Flutter project.
