@@ -1,8 +1,10 @@
+import 'package:contact_connect/CompulsoryTask/hngtask.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(ContactApp());
+  CompulsoryTask().printName();
 }
 
 class ContactApp extends StatefulWidget {
@@ -13,15 +15,11 @@ class ContactApp extends StatefulWidget {
 
 class _ContactAppState extends State<ContactApp> {
   var _name;
-
   var _email;
-
   var _phone;
 
   final nameCon = new TextEditingController();
-
   final emailCon = new TextEditingController();
-
   final phoneCon = new TextEditingController();
 
   @override
@@ -127,7 +125,7 @@ class _ContactAppState extends State<ContactApp> {
                               ],
                             ),
                             Container(
-                              child: Text('Ilo Chidiebere Annabel',
+                              child: Text('Chidiebere Annabel Ilo',
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontStyle: FontStyle.italic,
